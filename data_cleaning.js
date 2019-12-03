@@ -23,7 +23,7 @@ const csvWriter = createCsvWriter({
         {
             id: 'companyCount',
             title: 'companyCount'
-        },
+        }
     ]
 })
 
@@ -60,14 +60,12 @@ fs.createReadStream('states.csv')
                 const keys = Object.keys(codeToCount)
                 keys.forEach(code => {
                     let count = codeToCount[code]
-                    let licenseCount = codeToLicense[code] ? codeToLicense[code] : 0
-                    let companyCount = codeToCompany[code] ? codeToCompany[code] : 0
                     let d = {
                         stateCode: code,
                         stateName: codeToState[code],
                         storeCount: count,
-                        licenseCount: licenseCount,
-                        companyCount: companyCount,
+                        licensedCount: codeToLicense[code],
+                        companyCount: codeToCompany[code]
                     }
                     csvData.push(d)
                 })

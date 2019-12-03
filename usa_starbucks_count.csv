@@ -1,52 +1,52 @@
 stateCode,stateName,storeCount,licensedCount,companyCount
-AK,Alaska,49,,9
-AL,Alabama,85,,49
-AR,Arkansas,55,,36
-AZ,Arizona,488,,205
-CA,California,2821,,1982
-CO,Colorado,481,,231
-CT,Connecticut,123,,88
-DC,District of Columbia,91,,68
-DE,Delaware,25,,11
-FL,Florida,694,,482
-GA,Georgia,326,,177
-HI,Hawaii,99,,63
-IA,Iowa,89,,31
-ID,Idaho,67,,34
-IL,Illinois,575,,393
-IN,Indiana,221,,123
-KS,Kansas,94,,41
-KY,Kentucky,116,,54
-LA,Louisiana,84,,55
-MA,Massachusetts,273,,190
-MD,Maryland,257,,142
-ME,Maine,30,,20
-MI,Michigan,283,,132
-MN,Minnesota,184,,88
-MO,Missouri,188,,91
-MS,Mississippi,32,,16
-MT,Montana,36,,16
-NC,North Carolina,338,,152
-ND,North Dakota,13,,9
-NE,Nebraska,58,,21
-NH,New Hampshire,29,,22
-NJ,New Jersey,261,,174
-NM,New Mexico,76,,47
-NV,Nevada,253,,118
-NY,New York,645,,506
-OH,Ohio,378,,180
-OK,Oklahoma,79,,53
-OR,Oregon,359,,204
-PA,Pennsylvania,357,,220
-RI,Rhode Island,27,,18
-SC,South Carolina,131,,68
-SD,South Dakota,25,,10
-TN,Tennessee,180,,97
-TX,Texas,1042,,627
-UT,Utah,101,,56
-VA,Virginia,432,,246
-VT,Vermont,8,,6
-WA,Washington,757,,442
-WI,Wisconsin,145,,102
-WV,West Virginia,25,,10
-WY,Wyoming,23,,11
+AK,Alaska,49,40,9
+AL,Alabama,85,36,49
+AR,Arkansas,55,19,36
+AZ,Arizona,488,283,205
+CA,California,2821,839,1982
+CO,Colorado,481,250,231
+CT,Connecticut,123,35,88
+DC,District of Columbia,91,23,68
+DE,Delaware,25,14,11
+FL,Florida,694,212,482
+GA,Georgia,326,149,177
+HI,Hawaii,99,36,63
+IA,Iowa,89,58,31
+ID,Idaho,67,33,34
+IL,Illinois,575,182,393
+IN,Indiana,221,98,123
+KS,Kansas,94,53,41
+KY,Kentucky,116,62,54
+LA,Louisiana,84,29,55
+MA,Massachusetts,273,83,190
+MD,Maryland,257,115,142
+ME,Maine,30,10,20
+MI,Michigan,283,151,132
+MN,Minnesota,184,96,88
+MO,Missouri,188,97,91
+MS,Mississippi,32,16,16
+MT,Montana,36,20,16
+NC,North Carolina,338,186,152
+ND,North Dakota,13,4,9
+NE,Nebraska,58,37,21
+NH,New Hampshire,29,7,22
+NJ,New Jersey,261,87,174
+NM,New Mexico,76,29,47
+NV,Nevada,253,135,118
+NY,New York,645,139,506
+OH,Ohio,378,198,180
+OK,Oklahoma,79,26,53
+OR,Oregon,359,155,204
+PA,Pennsylvania,357,137,220
+RI,Rhode Island,27,9,18
+SC,South Carolina,131,63,68
+SD,South Dakota,25,15,10
+TN,Tennessee,180,83,97
+TX,Texas,1042,415,627
+UT,Utah,101,45,56
+VA,Virginia,432,186,246
+VT,Vermont,8,2,6
+WA,Washington,757,315,442
+WI,Wisconsin,145,43,102
+WV,West Virginia,25,15,10
+WY,Wyoming,23,12,11
