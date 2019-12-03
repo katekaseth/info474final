@@ -1,0 +1,52 @@
+stateCode,stateName,storeCount
+AK,Alaska,49
+AL,Alabama,85
+AR,Arkansas,55
+AZ,Arizona,488
+CA,California,2821
+CO,Colorado,481
+CT,Connecticut,123
+DC,District of Columbia,91
+DE,Delaware,25
+FL,Florida,694
+GA,Georgia,326
+HI,Hawaii,99
+IA,Iowa,89
+ID,Idaho,67
+IL,Illinois,575
+IN,Indiana,221
+KS,Kansas,94
+KY,Kentucky,116
+LA,Louisiana,84
+MA,Massachusetts,273
+MD,Maryland,257
+ME,Maine,30
+MI,Michigan,283
+MN,Minnesota,184
+MO,Missouri,188
+MS,Mississippi,32
+MT,Montana,36
+NC,North Carolina,338
+ND,North Dakota,13
+NE,Nebraska,58
+NH,New Hampshire,29
+NJ,New Jersey,261
+NM,New Mexico,76
+NV,Nevada,253
+NY,New York,645
+OH,Ohio,378
+OK,Oklahoma,79
+OR,Oregon,359
+PA,Pennsylvania,357
+RI,Rhode Island,27
+SC,South Carolina,131
+SD,South Dakota,25
+TN,Tennessee,180
+TX,Texas,1042
+UT,Utah,101
+VA,Virginia,432
+VT,Vermont,8
+WA,Washington,757
+WI,Wisconsin,145
+WV,West Virginia,25
+WY,Wyoming,23
