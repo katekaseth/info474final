@@ -16,7 +16,7 @@ const path = d3.geoPath()
 
 // define color scale
 const colorScale = d3.scaleThreshold()
-    .domain([0, 5, 10, 100, 300, 500])
+    .domain([20, 50, 100, 300, 500, 1000])
     .range(d3.schemeBlues[7]);
 
 //Create SVG element and append map to the SVG
@@ -63,7 +63,7 @@ d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/g
         .style('font-size', '20pt')
         .text("Starbucks Store Distribution in the US");
 
-    
+
     // load in starbucks store count
     d3.csv("usa_starbucks_count.csv", function (d) {
         usaData = d
@@ -102,10 +102,10 @@ function plotLicense(stateName) {
     const y = d3.scaleLinear()
         .range([tt_height - margin.bottom, margin.top]);
 
-    stateDataOG = usaData.filter((element) => {
+    let stateDataOG = usaData.filter((element) => {
         return element.stateName === stateName
     })
-    stateData = stateDataOG[0]
+    let stateData = stateDataOG[0]
     stateData = [stateData.licensedCount, stateData.companyCount]
     x.domain(["Licensed", "Company Owned"]);
     y.domain([0, Math.max(parseInt(stateData[0]), parseInt(stateData[1]))]);
@@ -126,7 +126,7 @@ function plotLicense(stateName) {
         .enter()
         .append("rect")
         .attr("class", "bar")
-        .attr("fill", "steelblue")
+        .attr("fill", "#FFBB78")
         .attr("x", function (d) {
             return x(d.type)
         })
@@ -148,16 +148,18 @@ function plotLicense(stateName) {
         .attr("transform", "translate(" + margin.left + ",0)")
         .call(d3.axisLeft(y));
 
+    // LABELS:
+
     // title label
     toolChart.append('text')
         .attr('x', (tt_width - 2 * margin.left) / 2 - 60)
-        .attr('y', 15)
+        .attr('y', 18)
         .style('font-size', '11pt')
         .text("Ownership Distribution for " + stateName);
 
     toolChart.append('text')
         .attr('x', (tt_width - 2 * margin.left) / 2 + 10)
-        .attr('y', 30)
+        .attr('y', 33)
         .style('font-size', '11pt')
         .text("Total Stores: " + stateDataOG[0].storeCount);
 
@@ -168,7 +170,7 @@ function plotLicense(stateName) {
         .style('font-size', '10pt')
         .text("Ownership Type");
 
-    // // y label
+    // y label
     toolChart.append('text')
         .attr('transform', 'translate(18,' + (tt_height / 2 + 45) + ') rotate(-90)')
         .style('font-size', '10pt')
