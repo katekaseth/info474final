@@ -14,13 +14,6 @@ div.tooltip {
     pointer-events: none;
 }
 
-/* Legend Position Style */
-/* .legend {
-    position: absolute;
-    left: 800px;
-    top: 350px;
-} */
-
 .legend {
     font-size: 12;
 }
