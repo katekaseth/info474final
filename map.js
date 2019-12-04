@@ -32,13 +32,13 @@ let div = d3.select("body")
     .style("opacity", 0);
 
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    tt_width = 960 - margin.left - margin.right,
-    tt_height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 20, left: 40},
+    tt_width = 300
+    tt_height = 300
 
 let toolChart = div.append("svg")
-    .attr("width", tt_width + margin.left + margin.right)
-    .attr("height", tt_height + margin.top + margin.bottom)
+    .attr("width", tt_width + margin.right)
+    .attr("height", tt_height + margin.bottom)
 
 // Load GeoJSON of the US states
 d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json", function (json) {
@@ -67,11 +67,11 @@ d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/g
                 toolChart.selectAll("*").remove()
                 div.transition()
                     .duration(200)
-                    .style("opacity", .9);
+                    .style("opacity", .95);
                 plotLicense(d.properties.name)
-                // div.html("Number of Stores" + "</br>" + d.properties.name + ": " + nameToCount[d.properties.name])
-                //     .style("left", (d3.event.pageX) + "px")		
-                //     .style("top", (d3.event.pageY - 28) + "px");	
+                div
+                    .style("left", (d3.event.pageX) + "px")		
+                    .style("top", (d3.event.pageY - 28) + "px");	
                 
             })
             .on("mouseout", (d) => {
@@ -84,34 +84,49 @@ d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/g
 
 function plotLicense(stateName) {
     var x = d3.scaleBand()
-        .range([0, tt_width])
-        .padding(0.1);
+        .range([margin.left, tt_width])
+        .padding(0.3);
     var y = d3.scaleLinear()
-        .range([tt_height, 0]);
+        .range([tt_height - margin.bottom, margin.top]);
 
-    x.domain(usaData.map(function (d) {
-        return d.stateName;
-    }));
-    y.domain([0, d3.max(usaData, function (d) {
-        return parseInt(d.storeCount);
-    })]);
+    stateData = usaData.filter((element) => {
+        return element.stateName === stateName
+    })
+    stateData = stateData[0]
+    stateData = [stateData.licensedCount, stateData.companyCount]
+    x.domain(["Licensed", "Company Owned"]);
+    y.domain([0,Math.max(parseInt(stateData[0]), parseInt(stateData[1]))]);
 
+    stateData = [
+        {
+            type: "Licensed",
+            value: stateData[0]
+        },
+        {
+            type: "Company Owned",
+            value: stateData[1]
+        }
+    ]
+    
     // append the rectangles for the bar chart
-    toolChart.selectAll(".bar")
-        .data(usaData[stateName])
-        .enter().append("rect")
+    toolChart.selectAll("rect")
+        .data(stateData)
+        .enter()
+        .append("rect")
         .attr("class", "bar")
-        .attr("fill", function(d) { console.log(d); })
-        // .attr("width", x.bandwidth())
-        // .attr("y", function(d) { return y(d.sales); })
-        // .attr("height", function(d) { return height - y(d.sales); });
+        .attr("fill", "steelblue")
+        .attr("x", function(d) { return x(d.type) })
+        .attr("width", x.bandwidth())
+        .attr("y", function(d) { return y(d.value) })
+        .attr("height", function(d) { return tt_height - margin.bottom - y(d.value) })
 
     // add the x Axis
-    svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
+    toolChart.append("g")
+        .attr("transform", "translate(0," + (tt_height - margin.bottom) + ")")
         .call(d3.axisBottom(x));
 
     // add the y Axis
-    svg.append("g")
+    toolChart.append("g")
+        .attr("transform", "translate("+ margin.left +",0)")
         .call(d3.axisLeft(y));
 }
