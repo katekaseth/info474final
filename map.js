@@ -33,10 +33,10 @@ let div = d3.select("body")
 
 // set the dimensions and margins of the graph
 const margin = {
-    top: 30,
+    top: 50,
     right: 20,
     bottom: 20,
-    left: 50
+    left: 60
 }
 const tt_width = 300
 const tt_height = 300
@@ -102,10 +102,10 @@ function plotLicense(stateName) {
     const y = d3.scaleLinear()
         .range([tt_height - margin.bottom, margin.top]);
 
-    stateData = usaData.filter((element) => {
+    stateDataOG = usaData.filter((element) => {
         return element.stateName === stateName
     })
-    stateData = stateData[0]
+    stateData = stateDataOG[0]
     stateData = [stateData.licensedCount, stateData.companyCount]
     x.domain(["Licensed", "Company Owned"]);
     y.domain([0, Math.max(parseInt(stateData[0]), parseInt(stateData[1]))]);
@@ -150,10 +150,16 @@ function plotLicense(stateName) {
 
     // title label
     toolChart.append('text')
-        .attr('x', (tt_width - 2 * margin.left) / 2 - 70)
-        .attr('y', margin.top / 2 + 2)
+        .attr('x', (tt_width - 2 * margin.left) / 2 - 60)
+        .attr('y', 15)
         .style('font-size', '11pt')
         .text("Ownership Distribution for " + stateName);
+
+    toolChart.append('text')
+        .attr('x', (tt_width - 2 * margin.left) / 2 + 10)
+        .attr('y', 30)
+        .style('font-size', '11pt')
+        .text("Total Stores: " + stateDataOG[0].storeCount);
 
     // x label
     toolChart.append('text')
@@ -164,7 +170,7 @@ function plotLicense(stateName) {
 
     // // y label
     toolChart.append('text')
-        .attr('transform', 'translate( 15,' + (tt_height / 2 + 45) + ') rotate(-90)')
+        .attr('transform', 'translate(18,' + (tt_height / 2 + 45) + ') rotate(-90)')
         .style('font-size', '10pt')
         .text("Number of Stores");
 }
