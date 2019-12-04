@@ -1,4 +1,3 @@
-// data storage
 let usaData;
 
 //Width and height of map
@@ -14,10 +13,16 @@ const projection = d3.geoAlbersUsa()
 const path = d3.geoPath()
     .projection(projection);
 
+// define legend 
+const threshold = [20, 50, 100, 300, 500, 1000]
+const legendText = ["< 20", "50+", "100+", "300+", "500+", "> 1000"];
+
 // define color scale
 const colorScale = d3.scaleThreshold()
-    .domain([20, 50, 100, 300, 500, 1000])
+    .domain(threshold)
     .range(d3.schemeBlues[7]);
+
+
 
 //Create SVG element and append map to the SVG
 let svg = d3.select("body")
@@ -63,8 +68,39 @@ d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/g
         .style('font-size', '20pt')
         .text("Starbucks Store Distribution in the US");
 
+    // add legend 
 
-    // load in starbucks store count
+    let legend = svg.selectAll("g.legend")
+        .data(threshold)
+        .enter()
+        .append("g")
+        .attr("class", "legend");
+
+    let ls_w = 25,
+        ls_h = 25;
+
+    legend.append("rect")
+        .attr("x", 20)
+        .attr("y", function (d, i) {
+            return height - (i * ls_h) - 2 * ls_h;
+        })
+        .attr("width", ls_w)
+        .attr("height", ls_h)
+        .style("fill", function (d, i) {
+            return colorScale(d);
+        })
+        .style("opacity", 0.8);
+
+    legend.append("text")
+        .attr("x", 50)
+        .attr("y", function (d, i) {
+            return height - (i * ls_h) - ls_h - 4;
+        })
+        .text(function (d, i) {
+            return legendText[i];
+        });
+
+    // load in starbucks store count to color the map
     d3.csv("usa_starbucks_count.csv", function (d) {
         usaData = d
         let nameToCount = {}
@@ -95,6 +131,7 @@ d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/g
     })
 })
 
+// makes a bar chart of ownership type based on given state name
 function plotLicense(stateName) {
     const x = d3.scaleBand()
         .range([margin.left, tt_width])

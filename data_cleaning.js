@@ -72,6 +72,6 @@ fs.createReadStream('states.csv')
                 console.log(csvData)
                 csvWriter
                     .writeRecords(csvData)
-                    .then(() => console.log('The CSV file was written successfully'))
+                    .then(() => console.log('The CSV file was written successfully.'))
             })
     })
