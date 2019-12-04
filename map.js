@@ -58,7 +58,7 @@ d3.json("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/g
 
     // map title label
     svg.append('text')
-        .attr('x', (width - 2 * margin.left) / 2 - 110)
+        .attr('x', (width - 2 * margin.left) / 2 - 170)
         .attr('y', margin.top / 2 + 40)
         .style('font-size', '20pt')
         .text("Starbucks Store Distribution in the US");
